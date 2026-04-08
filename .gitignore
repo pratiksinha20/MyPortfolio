@@ -1,0 +1,57 @@
+# ─── SECRETS ───────────────────────────────
+.env
+.env.*
+!.env.example
+application-secret.properties
+secrets.yml
+
+# ─── DEPENDENCIES ──────────────────────────
+node_modules/
+target/
+.mvn/wrapper/maven-wrapper.jar
+
+# ─── BUILD OUTPUT ──────────────────────────
+dist/
+build/
+out/
+
+# ─── IDE FILES ─────────────────────────────
+.idea/
+*.iml
+.vscode/
+*.suo
+*.user
+
+# ─── OS FILES ──────────────────────────────
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# ─── LOGS ──────────────────────────────────
+*.log
+logs/
+npm-debug.log*
+yarn-error.log*
+
+# ─── DATABASE ──────────────────────────────
+*.sqlite
+*.db
+dump.rdb
+
+# ─── CERTIFICATES & KEYS ───────────────────
+*.pem
+*.key
+*.jks
+*.keystore
+*.p12
+
+# ─── CLOUD ─────────────────────────────────
+.aws/
+firebase-adminsdk.json
+serviceAccountKey.json
+*.tfstate
+
+# ─── COVERAGE & TEST OUTPUT ────────────────
+coverage/
+.nyc_output/
+test-results/
