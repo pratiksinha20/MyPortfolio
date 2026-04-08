@@ -11,9 +11,9 @@ target/
 .mvn/wrapper/maven-wrapper.jar
 
 # ─── BUILD OUTPUT ──────────────────────────
-dist/
-build/
-out/
+# dist/
+# build/
+# out/
 
 # ─── IDE FILES ─────────────────────────────
 .idea/
