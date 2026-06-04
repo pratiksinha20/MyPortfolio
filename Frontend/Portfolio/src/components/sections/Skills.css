@@ -1,0 +1,585 @@
+/* ═══════════════════════════════════════════════════════════════
+   SKILLS SECTION — Diagonal Staggered Cards
+   ═══════════════════════════════════════════════════════════════ */
+
+.skills-page {
+    min-height: 100vh;
+    padding: 8rem 1.5rem 6rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 10;
+}
+
+.skills-header {
+    text-align: center;
+    margin-bottom: 5rem;
+    max-width: 36rem;
+}
+
+.skills-subtitle {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin-top: 0.5rem;
+}
+
+/* Staggered Grid */
+.skills-staggered-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    width: 100%;
+    max-width: 84rem;
+    padding-bottom: 8rem;
+}
+
+/* Medium Screen Layout */
+@media (min-width: 640px) and (max-width: 1023px) {
+    .skills-staggered-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 3rem;
+    }
+
+    .skills-card-wrapper:nth-child(even) {
+        transform: translateY(3rem);
+    }
+}
+
+/* Large Screen Layout - 5 Columns with Descending Offsets */
+@media (min-width: 1024px) {
+    .skills-staggered-grid {
+        grid-template-columns: repeat(5, 1fr);
+        gap: 1.25rem;
+    }
+
+    /* Descending diagonal staggered translates */
+    .skills-card-wrapper:nth-child(1) {
+        transform: translateY(0);
+    }
+
+    .skills-card-wrapper:nth-child(2) {
+        transform: translateY(3.5rem);
+    }
+
+    .skills-card-wrapper:nth-child(3) {
+        transform: translateY(7rem);
+    }
+
+    .skills-card-wrapper:nth-child(4) {
+        transform: translateY(10.5rem);
+    }
+
+    .skills-card-wrapper:nth-child(5) {
+        transform: translateY(14rem);
+    }
+}
+
+/* ── Diagonal Card Style (Image 1 style) ── */
+.skills-card {
+    background: rgba(10, 10, 15, 0.65);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 1.5rem;
+    padding: 2.25rem 1.5rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.skills-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--card-accent-border);
+    box-shadow: 0 15px 45px var(--card-accent-glow);
+}
+
+.skills-badge {
+    align-self: flex-start;
+    font-size: 0.62rem;
+    font-family: var(--font-mono, monospace);
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    padding: 0.3rem 0.75rem;
+    border-radius: 99px;
+    border: 1px solid var(--card-accent-border);
+    color: var(--card-accent-text);
+    background: var(--card-accent-bg);
+    margin-bottom: 1.25rem;
+    text-transform: uppercase;
+}
+
+.skills-title {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1.2;
+    margin-bottom: 0.75rem;
+    letter-spacing: -0.02em;
+}
+
+.skills-desc {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.45);
+    line-height: 1.55;
+    margin-bottom: 2rem;
+}
+
+/* Skill list / chips wrapping */
+.skills-chips-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: auto;
+}
+
+.skills-chip {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.5rem 0.75rem;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: 0.75rem;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    cursor: default;
+}
+
+.skills-chip:hover {
+    background: var(--card-accent-bg);
+    border-color: var(--card-accent-border);
+    color: var(--card-accent-text);
+    transform: scale(1.03);
+}
+
+.skills-chip-icon {
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.skills-chip-name {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.8);
+    transition: color 0.25s ease;
+}
+
+.skills-chip:hover .skills-chip-name {
+    color: #ffffff;
+}
+
+/* Card bottom action styling (Explore Now style) */
+.skills-card-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 2rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--card-accent-text);
+    text-decoration: none;
+    transition: opacity 0.2s;
+}
+
+.skills-card-action:hover {
+    opacity: 0.8;
+}
+
+.skills-card-action:hover .skills-arrow {
+    transform: translateX(4px);
+}
+
+.skills-arrow {
+    transition: transform 0.2s ease;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   SKILLS — Cards only, no page bg override, light/dark adaptive
+═══════════════════════════════════════════════════════════════ */
+
+/* ─── Light theme tokens ──────────────────────────────────────
+   Card = clean white, crisp border, real shadow
+   Chip = solid pill: white bg + grey border (like image 1)
+─────────────────────────────────────────────────────────────── */
+:root {
+    --sk-card-bg: #ffffff;
+    --sk-card-border: rgba(0, 0, 0, 0.09);
+    --sk-card-shadow: 0 2px 12px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.04);
+    --sk-card-shadow-h: 0 10px 36px rgba(0, 0, 0, 0.13), 0 2px 8px rgba(0, 0, 0, 0.06);
+
+    --sk-text-h: #0d1117;
+    --sk-text-body: #52606d;
+    --sk-text-muted: #9ca3af;
+
+    --sk-badge-bg: rgba(0, 0, 0, 0.05);
+    --sk-badge-border: var(--acc-border, rgba(0, 0, 0, 0.12));
+    --sk-badge-text: var(--acc-color, #6366f1);
+
+    --sk-chip-bg: #f4f5f7;
+    --sk-chip-border: rgba(0, 0, 0, 0.1);
+    --sk-chip-text: #1a202c;
+
+    --sk-project-bg: #f4f5f7;
+    --sk-project-bd: rgba(0, 0, 0, 0.1);
+
+    --sk-action-c: #0d1117;
+    --sk-divider: rgba(0, 0, 0, 0.07);
+    --sk-eyebrow-c: #6366f1;
+    --sk-headline-c: #0d1117;
+    --sk-sub-c: #52606d;
+}
+
+/* ─── Dark theme tokens ───────────────────────────────────────
+   Card = deep navy/charcoal, subtle border, glow shadow
+   Chip = dark pill: near-black bg + dim border
+─────────────────────────────────────────────────────────────── */
+.dark {
+    --sk-card-bg: #131519;
+    --sk-card-border: rgba(255, 255, 255, 0.07);
+    --sk-card-shadow: 0 2px 16px rgba(0, 0, 0, 0.4), 0 1px 4px rgba(0, 0, 0, 0.3);
+    --sk-card-shadow-h: 0 14px 48px rgba(0, 0, 0, 0.65), 0 4px 12px rgba(0, 0, 0, 0.4);
+
+    --sk-text-h: #f0f4f8;
+    --sk-text-body: rgba(255, 255, 255, 0.48);
+    --sk-text-muted: rgba(255, 255, 255, 0.28);
+
+    --sk-badge-bg: rgba(255, 255, 255, 0.05);
+    --sk-badge-border: var(--acc-border, rgba(255, 255, 255, 0.12));
+    --sk-badge-text: var(--acc-color, #00f0ff);
+
+    --sk-chip-bg: rgba(255, 255, 255, 0.05);
+    --sk-chip-border: rgba(255, 255, 255, 0.08);
+    --sk-chip-text: #e2e8f0;
+
+    --sk-project-bg: rgba(255, 255, 255, 0.05);
+    --sk-project-bd: rgba(255, 255, 255, 0.1);
+
+    --sk-action-c: var(--acc-color, #00f0ff);
+    --sk-divider: rgba(255, 255, 255, 0.06);
+    --sk-eyebrow-c: rgba(99, 102, 241, 0.9);
+    --sk-headline-c: #f0f4f8;
+    --sk-sub-c: rgba(255, 255, 255, 0.45);
+}
+
+/* ─── Page wrapper — NO background, inherits parent ─────────── */
+.sk-page {
+    min-height: 100vh;
+    padding: 7rem 2rem 6rem;
+    /* background: intentionally NOT set — uses parent page bg */
+}
+
+/* ─── Header ─────────────────────────────────────────────────── */
+.sk-header {
+    text-align: center;
+    max-width: 640px;
+    margin: 0 auto 4.5rem;
+}
+
+.sk-eyebrow {
+    font-size: 0.68rem;
+    font-family: ui-monospace, 'Cascadia Code', monospace;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--sk-eyebrow-c);
+    margin-bottom: 0.7rem;
+}
+
+.sk-headline {
+    font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    color: var(--sk-headline-c);
+    margin-bottom: 0.9rem;
+}
+
+.sk-subheadline {
+    font-size: 0.94rem;
+    color: var(--sk-sub-c);
+    line-height: 1.7;
+}
+
+/* ─── True diagonal cascade — flex wrap, per-card Y offset ──── */
+.sk-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+    max-width: 1340px;
+    margin: 0 auto;
+    align-items: flex-start;
+    padding-bottom: 18rem;
+    /* room for tallest offset card */
+}
+
+/* Each card: exactly 1/4 width minus gaps */
+.sk-card-wrap {
+    flex: 0 0 calc(25% - 0.95rem);
+    /* THE diagonal magic — unique per-card Y push via CSS var */
+    margin-top: var(--y-offset, 0px);
+}
+
+/* ─── Responsive: shrink offsets as columns collapse ─────────── */
+@media (max-width: 1100px) {
+    .sk-card-wrap {
+        flex: 0 0 calc(33.333% - 0.84rem);
+        margin-top: calc(var(--y-offset, 0px) * 0.55);
+    }
+
+    .sk-grid {
+        padding-bottom: 12rem;
+    }
+}
+
+@media (max-width: 780px) {
+    .sk-card-wrap {
+        flex: 0 0 calc(50% - 0.63rem);
+        margin-top: calc(var(--y-offset, 0px) * 0.28);
+    }
+
+    .sk-grid {
+        padding-bottom: 4rem;
+    }
+
+    .sk-page {
+        padding: 5.5rem 1rem 4rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .sk-card-wrap {
+        flex: 0 0 100%;
+        margin-top: 0;
+        /* stacked clean on mobile */
+    }
+
+    .sk-grid {
+        padding-bottom: 2rem;
+    }
+}
+
+.sk-card {
+    position: relative;
+    border-radius: 1.25rem;
+    padding: 1.6rem 1.4rem 1.4rem;
+    background: var(--sk-card-bg);
+    border: 1px solid var(--sk-card-border);
+    box-shadow: var(--sk-card-shadow);
+    overflow: hidden;
+    cursor: default;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    transition:
+        transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+        border-color 0.28s,
+        box-shadow 0.28s;
+    will-change: transform;
+    backface-visibility: hidden;
+}
+
+.sk-card-hovered {
+    transform: translateY(-5px);
+    border-color: var(--acc-border, rgba(99, 102, 241, 0.3));
+    box-shadow: var(--sk-card-shadow-h);
+}
+
+/* Corner glow blob */
+.sk-card-glow {
+    position: absolute;
+    top: -50px;
+    right: -50px;
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    background: var(--acc-glow, rgba(99, 102, 241, 0.08));
+    filter: blur(44px);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.35s;
+}
+
+.sk-card-hovered .sk-card-glow {
+    opacity: 1;
+}
+
+/* Left accent stripe on hover */
+.sk-card::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 1.25rem;
+    bottom: 1.25rem;
+    width: 3px;
+    border-radius: 0 2px 2px 0;
+    background: var(--acc-color, #6366f1);
+    opacity: 0;
+    transition: opacity 0.28s;
+}
+
+.sk-card-hovered::before {
+    opacity: 1;
+}
+
+/* ─── Badge ──────────────────────────────────────────────────── */
+.sk-badge {
+    display: inline-block;
+    font-size: 0.58rem;
+    font-family: ui-monospace, monospace;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.6rem;
+    border-radius: 999px;
+    background: var(--sk-badge-bg);
+    color: var(--sk-badge-text);
+    border: 1px solid var(--sk-badge-border);
+    margin-bottom: 0.7rem;
+    width: fit-content;
+}
+
+/* ─── Title ──────────────────────────────────────────────────── */
+.sk-title {
+    font-size: 1.45rem;
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    line-height: 1.18;
+    color: var(--sk-text-h);
+    margin-bottom: 0.55rem;
+}
+
+/* ─── Description ────────────────────────────────────────────── */
+.sk-desc {
+    font-size: 0.77rem;
+    line-height: 1.65;
+    color: var(--sk-text-body);
+    margin-bottom: 0.9rem;
+}
+
+/* ─── Divider between desc and projects/chips ────────────────── */
+.sk-divider-line {
+    width: 100%;
+    height: 1px;
+    background: var(--sk-divider);
+    margin-bottom: 0.9rem;
+}
+
+/* ─── Related Projects ───────────────────────────────────────── */
+.sk-projects {
+    margin-bottom: 0.85rem;
+}
+
+.sk-projects-label {
+    font-size: 0.62rem;
+    font-family: ui-monospace, monospace;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--sk-text-muted);
+    display: block;
+    margin-bottom: 0.4rem;
+}
+
+.sk-projects-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+}
+
+.sk-project-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.28rem;
+    padding: 0.28rem 0.65rem;
+    border-radius: 999px;
+    background: var(--sk-project-bg);
+    border: 1px solid var(--sk-project-bd);
+    color: var(--acc-color, #6366f1);
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.18s, border-color 0.18s, transform 0.14s;
+}
+
+.sk-project-tag:hover {
+    border-color: var(--acc-color);
+    transform: translateY(-1px);
+}
+
+/* ─── Skill chips — pill style like image 1 ─────────────────── */
+.sk-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 1.1rem;
+}
+
+.sk-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.38rem;
+    /* Pill shape — matches image 1 exactly */
+    padding: 0.32rem 0.7rem;
+    border-radius: 999px;
+    background: var(--sk-chip-bg);
+    border: 1px solid var(--sk-chip-border);
+    cursor: default;
+    transition:
+        background 0.18s,
+        border-color 0.18s,
+        transform 0.14s;
+}
+
+.sk-chip:hover {
+    background: color-mix(in srgb, var(--chip-color, currentColor) 9%, var(--sk-chip-bg));
+    border-color: color-mix(in srgb, var(--chip-color, currentColor) 35%, transparent);
+    transform: translateY(-1px);
+}
+
+.sk-chip-icon {
+    font-size: 0.95rem;
+    line-height: 1;
+    flex-shrink: 0;
+}
+
+.sk-chip-name {
+    font-size: 0.74rem;
+    font-weight: 600;
+    color: var(--sk-chip-text);
+    white-space: nowrap;
+}
+
+/* ─── Action link ────────────────────────────────────────────── */
+.sk-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.42rem;
+    font-size: 0.79rem;
+    font-weight: 700;
+    color: var(--sk-action-c);
+    text-decoration: none;
+    margin-top: auto;
+    padding-top: 0.1rem;
+    transition: gap 0.18s, opacity 0.18s;
+}
+
+.sk-action:hover {
+    gap: 0.65rem;
+    opacity: 0.75;
+}
+
+.sk-arrow {
+    font-size: 0.7rem;
+    transition: transform 0.18s;
+}
+
+.sk-action:hover .sk-arrow {
+    transform: translateX(3px);
+}
+
+/* ─── Card ───────────────────────────────────────────────────── */

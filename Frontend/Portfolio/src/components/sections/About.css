@@ -1,0 +1,575 @@
+/* ═══════════════════════════════════════════════════════════════
+   ABOUT PAGE — card-based, centered, sidebar + content
+═══════════════════════════════════════════════════════════════ */
+
+/* Page wrapper */
+.about-page {
+    min-height: 100vh;
+    padding: 7rem 1.5rem 5rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+/* Max-width container — centered */
+.about-container {
+    width: 100%;
+    max-width: 72rem;
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 1.5rem;
+    align-items: start;
+}
+
+/* ── Shared card ── */
+.about-card {
+    background: var(--bg-card, rgba(255, 255, 255, 0.03));
+    border: 1px solid var(--border-glass, rgba(255, 255, 255, 0.08));
+    border-radius: 1.25rem;
+    padding: 1.5rem;
+    transition: border-color 0.25s;
+}
+
+.about-card:hover {
+    border-color: var(--border-glass-hover, rgba(255, 255, 255, 0.14));
+}
+
+/* ── Section label ── */
+.about-label {
+    font-size: 0.68rem;
+    font-family: ui-monospace, 'Cascadia Code', monospace;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+}
+
+/* ═══════════════════════════
+   LEFT SIDEBAR
+═══════════════════════════ */
+.about-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    position: sticky;
+    top: 6rem;
+}
+
+/* Profile card */
+.about-profile-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.5rem;
+    padding: 2rem 1.5rem 1.75rem;
+}
+
+.about-avatar-wrap {
+    position: relative;
+    width: 6.5rem;
+    height: 6.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.about-avatar-glow {
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    background: conic-gradient(from 180deg,
+            #22d3ee,
+            #818cf8,
+            #a78bfa,
+            #22d3ee);
+    opacity: 0.35;
+    filter: blur(10px);
+    pointer-events: none;
+}
+
+.about-avatar-img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(255, 255, 255, 0.12);
+    position: relative;
+    z-index: 1;
+}
+
+.about-profile-name {
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--text-primary, #f1f5f9);
+    margin-top: 0.25rem;
+}
+
+.about-profile-role {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    font-family: ui-monospace, monospace;
+    letter-spacing: 0.04em;
+}
+
+.about-resume-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    margin-top: 0.75rem;
+    padding: 0.55rem 1.25rem;
+    border-radius: 999px;
+    border: 1px solid var(--border-glass);
+    background: var(--bg-secondary);
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.2s, border-color 0.2s, color 0.2s, transform 0.15s;
+}
+
+.about-resume-btn:hover {
+    background: rgba(34, 211, 238, 0.1);
+    border-color: rgba(34, 211, 238, 0.4);
+    color: #fff;
+    transform: translateY(-1px);
+}
+
+.about-resume-icon {
+    color: #22d3ee;
+    font-size: 0.8rem;
+}
+
+/* Quick Info */
+.about-info-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.about-info-item {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-secondary, rgba(255, 255, 255, 0.7));
+}
+
+.about-info-icon {
+    font-size: 0.95rem;
+    flex-shrink: 0;
+}
+
+/* Academics Card */
+.about-academic-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1.15rem;
+}
+
+.about-academic-item {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+}
+
+.about-academic-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.15rem;
+    padding: 0.55rem;
+    background: var(--bg-secondary, rgba(255, 255, 255, 0.02));
+    border: 1px solid var(--border-glass, rgba(255, 255, 255, 0.08));
+    border-radius: 0.65rem;
+    flex-shrink: 0;
+}
+
+.about-academic-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+}
+
+.about-academic-title {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text-primary, #f1f5f9);
+}
+
+.about-academic-sub {
+    font-size: 0.74rem;
+    color: var(--text-muted, #94a3b8);
+}
+
+/* Milestones */
+.about-milestones-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.about-milestone-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+}
+
+.about-milestone-icon {
+    font-size: 0.85rem;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    flex-shrink: 0;
+}
+
+.about-milestone-cyan .about-milestone-icon {
+    background: rgba(34, 211, 238, 0.1);
+    border: 1px solid rgba(34, 211, 238, 0.2);
+    color: #22d3ee;
+}
+
+.about-milestone-purple .about-milestone-icon {
+    background: rgba(167, 139, 250, 0.1);
+    border: 1px solid rgba(167, 139, 250, 0.2);
+    color: #a78bfa;
+}
+
+.about-milestone-amber .about-milestone-icon {
+    background: rgba(251, 191, 36, 0.1);
+    border: 1px solid rgba(251, 191, 36, 0.2);
+    color: #fbbf24;
+}
+
+.about-milestone-title {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--text-primary, #1e293b);
+    margin-bottom: 0.2rem;
+}
+
+.about-milestone-sub {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+}
+
+/* ═══════════════════════════
+   RIGHT CONTENT
+═══════════════════════════ */
+.about-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+/* Hero heading */
+.about-hero-title {
+    font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary, #f1f5f9);
+}
+
+.about-hero-role {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+/* Bio */
+.about-bio {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    font-size: 0.92rem;
+    line-height: 1.75;
+    color: var(--text-secondary);
+}
+
+.about-bio strong {
+    color: var(--text-primary, #f1f5f9);
+    font-weight: 700;
+}
+
+.about-bio-cta {
+    font-weight: 700;
+    font-style: italic;
+    color: var(--text-primary, #f1f5f9) !important;
+    letter-spacing: 0.01em;
+    padding-top: 0.25rem;
+}
+
+/* Skills grid */
+.about-skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 0.65rem;
+}
+
+.about-skill-chip {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.65rem 0.85rem;
+    border-radius: 0.75rem;
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    background: rgba(255, 255, 255, 0.03);
+    cursor: default;
+    transition: background 0.2s, border-color 0.2s;
+}
+
+.about-skill-chip:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.13);
+}
+
+.about-skill-icon {
+    font-size: 1.1rem;
+    flex-shrink: 0;
+}
+
+.about-skill-name {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--text-secondary, rgba(255, 255, 255, 0.65));
+    white-space: nowrap;
+}
+
+/* ═══════════════════════════
+   RESPONSIVE
+═══════════════════════════ */
+@media (max-width: 900px) {
+    .about-container {
+        grid-template-columns: 1fr;
+    }
+
+    .about-sidebar {
+        position: static;
+        /* reorder: profile + info first on mobile */
+    }
+
+    .about-hero-title {
+        font-size: 1.75rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .about-page {
+        padding: 5.5rem 1rem 3rem;
+    }
+
+    .about-skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* ── LinkedIn Card Styles ── */
+.about-linkedin-card {
+    padding: 0 !important;
+    overflow: hidden;
+}
+
+.about-linkedin-label-wrap {
+    padding: 0.8rem 1rem 0.5rem;
+}
+
+.about-linkedin-link {
+    display: block;
+    text-decoration: none;
+    cursor: pointer;
+    outline: none;
+}
+
+.about-linkedin-img-wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1.62 / 1;
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.about-linkedin-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.about-linkedin-link:hover .about-linkedin-img {
+    transform: scale(1.015);
+}
+
+.about-linkedin-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(2px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.about-linkedin-link:hover .about-linkedin-overlay {
+    opacity: 1;
+}
+
+.about-linkedin-overlay-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1.25rem;
+    background: #0077b5;
+    color: #fff;
+    border-radius: 99px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    box-shadow: 0 4px 15px rgba(0, 119, 181, 0.4);
+    transform: scale(0.9);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.about-linkedin-link:hover .about-linkedin-overlay-btn {
+    transform: scale(1);
+}
+
+.about-linkedin-footer {
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.5rem;
+    border-top: 1px solid var(--border-glass, rgba(255, 255, 255, 0.08));
+    background: rgba(255, 255, 255, 0.015);
+}
+
+.about-linkedin-name {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text-primary, #f1f5f9);
+    margin-bottom: 0.25rem;
+}
+
+.about-linkedin-tagline {
+    font-size: 0.72rem;
+    color: var(--text-secondary);
+    line-height: 1.4;
+    max-width: 28rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.about-linkedin-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.5rem 1.1rem;
+    border-radius: 0.5rem;
+    border: 1px solid rgba(0, 119, 181, 0.35);
+    background: rgba(0, 119, 181, 0.05);
+    color: #0077b5;
+    font-size: 0.78rem;
+    font-weight: 700;
+    transition: all 0.25s ease;
+    flex-shrink: 0;
+}
+
+.about-linkedin-link:hover .about-linkedin-btn {
+    background: #0077b5;
+    border-color: #0077b5;
+    color: #fff;
+    box-shadow: 0 0 12px rgba(0, 119, 181, 0.35);
+}
+
+/* ── Internship Card Styles ── */
+.about-intern-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.about-intern-header {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+}
+
+.about-intern-logo-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    padding: 0.6rem;
+    background: rgba(34, 211, 238, 0.15);
+    border: 1px solid rgba(34, 211, 238, 0.3);
+    color: #00e5ff;
+    border-radius: 0.65rem;
+    flex-shrink: 0;
+}
+
+body:not(.dark) .about-intern-logo-wrap {
+    background: rgba(0, 119, 181, 0.1);
+    border: 1px solid rgba(0, 119, 181, 0.25);
+    color: #0077b5;
+}
+
+.about-intern-role {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.about-intern-company {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.about-intern-project {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    padding: 1rem;
+    border-radius: 0.85rem;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-glass);
+}
+
+.about-intern-badge {
+    align-self: flex-start;
+    font-size: 0.62rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 0.25rem 0.6rem;
+    border-radius: 99px;
+    background: rgba(167, 139, 250, 0.15);
+    border: 1px solid rgba(167, 139, 250, 0.3);
+    color: #8b5cf6;
+}
+
+body.dark .about-intern-badge {
+    color: #a78bfa;
+}
+
+.about-intern-project-name {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.about-intern-desc {
+    font-size: 0.74rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}

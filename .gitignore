@@ -21,6 +21,7 @@ target/
 .vscode/
 *.suo
 *.user
+.gemini/
 
 # ─── OS FILES ──────────────────────────────
 .DS_Store

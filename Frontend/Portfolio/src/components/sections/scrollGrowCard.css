@@ -1,0 +1,338 @@
+/* ═══════════════════════════════════════════════════════════════
+   SCROLL-GROW CARD  (antigravity / Apple-style expansion)
+═══════════════════════════════════════════════════════════════ */
+
+.scroll-grow-card {
+    width: 100%;
+    background: #070708;
+    overflow: hidden;
+    border-top: 1px solid rgba(255, 255, 255, 0.07);
+    box-shadow:
+        0 -20px 60px rgba(0, 0, 0, 0.9),
+        inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    padding: 5rem 3rem 0;
+    transform-origin: top center;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    /* ── GPU compositing: eliminates stutter / layout thrash ── */
+    will-change: transform;
+    contain: layout style;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+@media (max-width: 768px) {
+    .scroll-grow-card {
+        padding: 3.5rem 1.25rem 0;
+    }
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   PREMIUM FOOTER
+═══════════════════════════════════════════════════════════════ */
+
+.portfolio-footer {
+    position: relative;
+    width: 100%;
+    margin-top: 7rem;
+    padding: 0 0 3rem;
+    overflow: hidden;
+}
+
+/* ── Top beam ── */
+.footer-beam {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg,
+            transparent 0%,
+            rgba(99, 202, 253, 0.25) 20%,
+            rgba(168, 85, 247, 0.35) 50%,
+            rgba(99, 202, 253, 0.25) 80%,
+            transparent 100%);
+    margin-bottom: 3rem;
+}
+
+/* ── Content wrapper ── */
+.footer-inner {
+    position: relative;
+    z-index: 2;
+    max-width: 64rem;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+/* ── Row 1: Brand + socials ── */
+.footer-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-bottom: 2.5rem;
+}
+
+.footer-brand {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.footer-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #e2e8f0 0%, #94a3b8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+}
+
+.footer-tagline {
+    font-size: 0.78rem;
+    color: rgba(255, 255, 255, 0.38);
+    font-family: ui-monospace, 'Cascadia Code', 'Fira Mono', monospace;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+/* ── Socials ── */
+.footer-socials {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.footer-social-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 0.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.04);
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 1rem;
+    text-decoration: none;
+    transition: color 0.2s, border-color 0.2s, background 0.2s, transform 0.15s;
+}
+
+.footer-social-btn:hover {
+    color: #fff;
+    border-color: rgba(99, 202, 253, 0.5);
+    background: rgba(99, 202, 253, 0.08);
+    transform: translateY(-2px);
+}
+
+.footer-code-icon {
+    font-size: 0.6rem;
+    font-weight: 700;
+    font-family: ui-monospace, monospace;
+    letter-spacing: 0.05em;
+}
+
+/* ── Decorative divider ── */
+.footer-divider {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 2.5rem;
+}
+
+.footer-divider-line {
+    flex: 1;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.footer-divider-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: rgba(99, 202, 253, 0.5);
+    flex-shrink: 0;
+    box-shadow: 0 0 8px rgba(99, 202, 253, 0.4);
+}
+
+/* ── Row 2: Nav + status + email ── */
+.footer-mid {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+}
+
+.footer-nav {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    flex-wrap: wrap;
+}
+
+.footer-nav-link {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.35rem 0.7rem;
+    border-radius: 0.4rem;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.45);
+    letter-spacing: 0.02em;
+    transition: color 0.2s, background 0.2s;
+}
+
+.footer-nav-link:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.06);
+}
+
+/* Open-to-work badge */
+.footer-status {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.4rem 0.9rem;
+    border-radius: 999px;
+    border: 1px solid rgba(74, 222, 128, 0.25);
+    background: rgba(74, 222, 128, 0.06);
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: rgba(74, 222, 128, 0.9);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.footer-status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #4ade80;
+    animation: status-pulse 2s ease-in-out infinite;
+    flex-shrink: 0;
+}
+
+@keyframes status-pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+        box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.5);
+    }
+
+    50% {
+        opacity: 0.7;
+        box-shadow: 0 0 0 5px rgba(74, 222, 128, 0);
+    }
+}
+
+.footer-email {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.35);
+    text-decoration: none;
+    font-family: ui-monospace, monospace;
+    letter-spacing: 0.03em;
+    transition: color 0.2s;
+}
+
+.footer-email:hover {
+    color: rgba(99, 202, 253, 0.9);
+}
+
+/* ── Thin divider ── */
+.footer-divider-thin {
+    width: 100%;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.07);
+    margin-bottom: 1.75rem;
+}
+
+/* ── Row 3: Copyright + legal ── */
+.footer-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.footer-copy {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.25);
+    font-family: ui-monospace, monospace;
+}
+
+.footer-legal {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.footer-legal-link {
+    font-size: 0.72rem;
+    color: rgba(255, 255, 255, 0.25);
+    text-decoration: none;
+    font-family: ui-monospace, monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    transition: color 0.2s;
+}
+
+.footer-legal-link:hover {
+    color: rgba(255, 255, 255, 0.65);
+}
+
+.footer-legal-sep {
+    color: rgba(255, 255, 255, 0.15);
+    font-size: 0.7rem;
+}
+
+/* ── Background glows ── */
+.footer-glow {
+    position: absolute;
+    bottom: 0;
+    width: 300px;
+    height: 200px;
+    pointer-events: none;
+    border-radius: 50%;
+    filter: blur(80px);
+    z-index: 0;
+}
+
+.footer-glow-left {
+    left: -60px;
+    background: rgba(99, 202, 253, 0.06);
+}
+
+.footer-glow-right {
+    right: -60px;
+    background: rgba(168, 85, 247, 0.07);
+}
+
+/* ── Responsive ── */
+@media (max-width: 640px) {
+
+    .footer-top,
+    .footer-mid,
+    .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .footer-socials {
+        align-self: flex-start;
+    }
+
+    .footer-bottom {
+        align-items: center;
+        text-align: center;
+    }
+}
