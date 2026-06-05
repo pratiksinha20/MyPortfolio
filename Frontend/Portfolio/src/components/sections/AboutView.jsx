@@ -182,21 +182,29 @@ export default function AboutView() {
             <Label>About Me</Label>
             <div className="about-bio">
               <p>
-                I am currently pursuing a Bachelor of Engineering in Computer Science and Engineering.
-                A passionate <strong>Full Stack Developer</strong> and <strong>Problem Solver</strong>{' '}
-                constantly exploring the intersection of design and engineering.
+                I am currently pursuing a Bachelor of Engineering in Computer Science and Engineering at Chandigarh University.
+                I am passionate about building software that combines clean design, scalable architecture, and meaningful user experiences.
               </p>
+
               <p>
-                My expertise lies in building scalable web applications using modern technologies like
-                React.js, Spring Boot, and Node.js. I take pride in crafting interfaces that are not only
-                highly functional but also visually stunning — bridging complex backend logic with beautiful UI.
+                As a <strong>Full Stack Developer</strong>, I specialize in developing modern web applications using technologies such as
+                React.js, Spring Boot, PostgreSQL, and cloud-native tools. I enjoy transforming complex problems into efficient,
+                reliable, and user-friendly solutions.
               </p>
+
               <p>
-                Beyond tech, I am an active competitive programmer on LeetCode and Codeforces,
-                keeping my problem-solving sharp and staying current with software engineering trends.
+                My interests extend beyond web development into Data Structures & Algorithms, System Design, Artificial Intelligence,
+                and Computer Vision. Through projects, internships, and continuous learning, I strive to strengthen both my technical
+                expertise and problem-solving mindset.
               </p>
+
+              <p>
+                Outside development, I actively practice competitive programming on LeetCode and Codeforces, constantly challenging
+                myself to think critically and write better code.
+              </p>
+
               <p className="about-bio-cta">
-                Where creativity meets collaboration — let’s build the future.
+                Building impactful solutions, one challenge at a time.
               </p>
             </div>
           </Card>

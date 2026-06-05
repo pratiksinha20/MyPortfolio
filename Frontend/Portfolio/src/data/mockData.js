@@ -151,7 +151,7 @@ export const projects = [
   },
   {
     id: 4,
-    title: "Explorily",
+    title: "Explorely",
     subtitle: "Travel Exploration Platform",
     description: "Travel exploration platform that helps users discover destinations through dynamic search and real-time location data.",
     techStack: ["React.js", "JavaScript", "REST APIs", "CSS", "HTML"],
