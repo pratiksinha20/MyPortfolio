@@ -304,15 +304,17 @@ body.dark .green-orb {
   font-weight: 800;
 }
 
-.navbar {
-  display: flex;
-  align-items: center;
-  gap: 2.2rem;
-  background: var(--bg-card);
-  border: 1px solid var(--border-glass);
-  padding: 0.5rem 1.8rem;
-  border-radius: 30px;
-  backdrop-filter: blur(10px);
+@media (min-width: 768px) {
+  .navbar {
+    display: flex;
+    align-items: center;
+    gap: 2.2rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border-glass);
+    padding: 0.5rem 1.8rem;
+    border-radius: 30px;
+    backdrop-filter: blur(10px);
+  }
 }
 
 .nav-link {
@@ -347,10 +349,12 @@ body.dark .green-orb {
   width: 100%;
 }
 
-.nav-socials {
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
+@media (min-width: 768px) {
+  .nav-socials {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
 }
 
 .social-icon {

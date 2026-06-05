@@ -338,7 +338,7 @@
     }
 }
 
-@media (max-width: 780px) {
+@media (max-width: 900px) {
     .sk-card-wrap {
         flex: 0 0 calc(50% - 0.63rem);
         margin-top: calc(var(--y-offset, 0px) * 0.28);
@@ -347,13 +347,9 @@
     .sk-grid {
         padding-bottom: 4rem;
     }
-
-    .sk-page {
-        padding: 5.5rem 1rem 4rem;
-    }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
     .sk-card-wrap {
         flex: 0 0 100%;
         margin-top: 0;
@@ -362,6 +358,10 @@
 
     .sk-grid {
         padding-bottom: 2rem;
+    }
+
+    .sk-page {
+        padding: 5.5rem 1rem 4rem;
     }
 }
 

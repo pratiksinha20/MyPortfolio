@@ -430,3 +430,27 @@
         height: 160px;
     }
 }
+
+@media (max-width: 400px) {
+    .jrn-card-diamond {
+        transform: rotate(0deg) !important;
+        width: 230px;
+        height: auto;
+        min-height: 150px;
+        border-radius: 1.25rem;
+        padding: 1.25rem;
+    }
+    .jrn-card-content {
+        transform: rotate(0deg) !important;
+        width: 100%;
+        height: auto;
+        padding: 0;
+    }
+    .jrn-arrow-line {
+        display: none !important;
+    }
+    .jrn-left-col,
+    .jrn-right-col {
+        padding-left: 0.25rem !important;
+    }
+}

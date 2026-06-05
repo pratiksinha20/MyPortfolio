@@ -10,7 +10,7 @@ function ProjectCard({ project, isFlipped, onFlip, index }) {
   return (
     <div
       className="proj-card-wrapper"
-      onDoubleClick={onFlip}
+      onClick={onFlip}
     >
       <motion.div
         className="proj-card-inner"
@@ -34,7 +34,7 @@ function ProjectCard({ project, isFlipped, onFlip, index }) {
               <span className="proj-cat-badge">{project.category}</span>
               <span className="proj-flip-hint">
                 <FaMousePointer className="proj-flip-icon" />
-                Double click to flip
+                Click to flip
               </span>
             </div>
             <h3 className="proj-title">{project.title}</h3>
@@ -112,16 +112,36 @@ function ProjectCard({ project, isFlipped, onFlip, index }) {
           </div>
 
           <div className="proj-back-footer">
-            <span className="proj-back-hint">Double click to return</span>
-            <button
-              className="proj-btn proj-btn-secondary flex items-center gap-1 py-1 px-3 text-[11px]"
-              onClick={(e) => {
-                e.stopPropagation();
-                onFlip();
-              }}
-            >
-              <FaUndo size={9} /> Flip Back
-            </button>
+            <div className="proj-actions-back" onClick={e => e.stopPropagation()}>
+              <a
+                href={project.demoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="proj-btn proj-btn-primary py-1 px-2.5 text-[11px]"
+              >
+                <FaExternalLinkAlt size={10} /> Live Link
+              </a>
+              <a
+                href={project.githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="proj-btn proj-btn-secondary py-1 px-2.5 text-[11px]"
+              >
+                <FaGithub size={11} /> GitHub
+              </a>
+            </div>
+            <div className="proj-back-footer-right">
+              <span className="proj-back-hint">Click to return</span>
+              <button
+                className="proj-btn proj-btn-secondary flex items-center gap-1 py-1 px-3 text-[11px]"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onFlip();
+                }}
+              >
+                <FaUndo size={9} /> Flip Back
+              </button>
+            </div>
           </div>
         </div>
       </motion.div>

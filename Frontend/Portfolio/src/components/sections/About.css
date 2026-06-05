@@ -367,6 +367,23 @@
     .about-skills-grid {
         grid-template-columns: repeat(2, 1fr);
     }
+
+    .about-linkedin-footer {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1.25rem;
+        text-align: center;
+    }
+
+    .about-linkedin-tagline {
+        -webkit-line-clamp: unset;
+        display: block;
+        max-width: 100%;
+    }
+
+    .about-linkedin-btn {
+        justify-content: center;
+    }
 }
 
 /* ── LinkedIn Card Styles ── */
