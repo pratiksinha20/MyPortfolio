@@ -211,14 +211,14 @@ export default function HomeView({ onNavigate }) {
           </motion.p>
 
           <motion.div
-            className="hero-ctas flex flex-col items-center justify-center gap-4 w-full sm:flex-row sm:w-auto max-w-lg"
+            className="hero-ctas flex flex-col items-center justify-center gap-4 w-full sm:flex-row sm:w-auto max-w-lg sm:max-w-none"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.5 }}
           >
             <button
               onClick={() => onNavigate('projects')}
-              className="btn btn-primary px-8 py-3.5 text-base w-full sm:w-auto cursor-pointer"
+              className="btn btn-primary px-8 py-3.5 text-base w-full sm:w-auto cursor-pointer sm:flex-none"
             >
               <span>View Projects</span>
               <FaArrowRight className="text-sm" />
