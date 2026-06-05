@@ -99,6 +99,23 @@ export default function AchievementGalaxy({ onNavigate }) {
       emergeDelay: 0.1,
     },
     {
+      id: 'education',
+      value: '8.39',
+      label: 'CGPA',
+      icon: '🎓',
+      target: 'journey',
+      details: 'Pursuing B.E. CSE. Core theory, data structures, and computer science.',
+      sizeClass: 'w-38 h-38 md:w-44 md:h-44',
+      glowClass: 'orb-orange-glow',
+      gradient: 'from-orange-500/10 via-orange-400/20 to-rose-500/30',
+      borderClass: 'border-orange-500/35 hover:border-orange-400/60',
+      accentColor: '#f97316',
+      parallaxFactor: 28,
+      floatHeight: -16,
+      floatDuration: 4.8,
+      emergeDelay: 0.2,
+    },
+    {
       id: 'certifications',
       value: '3+',
       label: 'Certificates',
@@ -132,29 +149,12 @@ export default function AchievementGalaxy({ onNavigate }) {
       floatDuration: 7.0,
       emergeDelay: 0.5,
     },
-    {
-      id: 'education',
-      value: '8.39',
-      label: 'CGPA',
-      icon: '🎓',
-      target: 'journey',
-      details: 'Pursuing B.E. CSE. Core theory, data structures, and computer science.',
-      sizeClass: 'w-38 h-38 md:w-44 md:h-44',
-      glowClass: 'orb-orange-glow',
-      gradient: 'from-orange-500/10 via-orange-400/20 to-rose-500/30',
-      borderClass: 'border-orange-500/35 hover:border-orange-400/60',
-      accentColor: '#f97316',
-      parallaxFactor: 28,
-      floatHeight: -16,
-      floatDuration: 4.8,
-      emergeDelay: 0.2,
-    },
   ];
 
   return (
     <div
       ref={containerRef}
-      className="relative w-full max-w-5xl mx-auto py-20 px-6 overflow-visible select-none flex flex-col items-center"
+      className="relative w-full max-w-5xl mx-auto py-10 md:py-16 px-6 overflow-visible select-none flex flex-col items-center"
     >
       {/* Galaxy Concentric Orbits SVG Backdrop */}
       <div className="absolute inset-0 pointer-events-none flex items-center justify-center overflow-hidden z-0 opacity-40">
@@ -166,7 +166,7 @@ export default function AchievementGalaxy({ onNavigate }) {
       </div>
 
       {/* Galaxy Title */}
-      <div className="text-center mb-16 relative z-10">
+      <div className="text-center mb-8 md:mb-12 relative z-10">
 
         <h2 className="text-3xl md:text-4xl font-bold font-heading bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent">
           Achievement Galaxy

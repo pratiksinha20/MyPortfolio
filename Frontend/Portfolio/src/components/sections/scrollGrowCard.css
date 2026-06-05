@@ -38,8 +38,8 @@
 .portfolio-footer {
     position: relative;
     width: 100%;
-    margin-top: 7rem;
-    padding: 0 0 3rem;
+    margin-top: 3.5rem;
+    padding: 0 0 2rem;
     overflow: hidden;
 }
 
@@ -53,7 +53,7 @@
             rgba(168, 85, 247, 0.35) 50%,
             rgba(99, 202, 253, 0.25) 80%,
             transparent 100%);
-    margin-bottom: 3rem;
+    margin-bottom: 1.5rem;
 }
 
 /* ── Content wrapper ── */

@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 // import { motion, useScroll, useTransform } from 'framer-motion';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 import { TypeAnimation } from 'react-type-animation';
 import { FaArrowRight, FaDownload, FaGithub, FaLinkedin } from 'react-icons/fa';
 import SkillsTicker from './SkillsTicker';
@@ -10,17 +10,34 @@ import './scrollGrowCard.css';
 /* ─── Scroll-grow card (antigravity style) ─────────────────────────────── */
 function ScrollGrowCard({ children }) {
   const cardRef = useRef(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   // offset: animation starts just before card hits viewport bottom,
-  // finishes when card top reaches 10% from top — feels instant, no delay
+  // finishes when card top reaches top. On mobile we widen this range to spread the transition.
   const { scrollYProgress } = useScroll({
     target: cardRef,
-    offset: ['start 0.95', 'start 0.1'],
+    offset: isMobile ? ['start 0.98', 'start 0.0'] : ['start 0.95', 'start 0.1'],
   });
 
-  // Direct transforms — NO useSpring (spring adds lag/overshoot = stutter)
-  const scale = useTransform(scrollYProgress, [0, 1], [0.84, 1]);
-  const borderRadius = useTransform(scrollYProgress, [0, 1], [48, 0]);
+  // Soft spring physics (lower stiffness + moderate damping) smooths out mobile browser scroll inertia
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 70,
+    damping: 24,
+    restDelta: 0.001
+  });
+
+  // Conditionally apply extremely subtle scaling and border-radius on mobile to prevent layout reflows and text displacement
+  const scale = useTransform(smoothProgress, [0, 1], [isMobile ? 0.965 : 0.84, 1]);
+  const borderRadius = useTransform(smoothProgress, [0, 1], [isMobile ? 12 : 48, 0]);
 
   return (
     <motion.div
@@ -146,16 +163,6 @@ function Footer({ onNavigate }) {
 
 /* ─── HomeView ──────────────────────────────────────────────────────────── */
 export default function HomeView({ onNavigate }) {
-  const [scrollOffset, setScrollOffset] = useState(0);
-
-  useEffect(() => {
-    const handleScroll = () => setScrollOffset(window.scrollY);
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const wheelY = Math.min(12, 4 + (scrollOffset % 40) * 0.3);
-
   return (
     <div className="relative w-full flex flex-col items-center">
 
@@ -204,7 +211,7 @@ export default function HomeView({ onNavigate }) {
           </motion.p>
 
           <motion.div
-            className="hero-ctas flex flex-col sm:flex-row items-center justify-center gap-5 w-full sm:w-auto"
+            className="hero-ctas flex flex-col items-center justify-center gap-4 w-full sm:flex-row sm:w-auto max-w-lg"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.5 }}
@@ -217,24 +224,26 @@ export default function HomeView({ onNavigate }) {
               <FaArrowRight className="text-sm" />
             </button>
 
-            <a
-              href="/assets/resume.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn btn-secondary px-8 py-3.5 text-base w-full sm:w-auto cursor-pointer"
-            >
-              <span>View Resume</span>
-              <FaArrowRight className="text-sm" />
-            </a>
+            <div className="flex flex-row gap-3 w-full sm:w-auto justify-center">
+              <a
+                href="/assets/resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-secondary px-4 py-3.5 text-xs sm:text-base sm:px-8 w-full sm:w-auto cursor-pointer flex-1 sm:flex-none"
+              >
+                <span>View Resume</span>
+                <FaArrowRight className="text-sm" />
+              </a>
 
-            <a
-              href="/assets/resume.pdf"
-              download="Pratik_Sinha_Resume.pdf"
-              className="btn btn-outline px-8 py-3.5 text-base w-full sm:w-auto cursor-pointer"
-            >
-              <span>Download Resume</span>
-              <FaDownload className="text-sm" />
-            </a>
+              <a
+                href="/assets/resume.pdf"
+                download="Pratik_Sinha_Resume.pdf"
+                className="btn btn-outline px-4 py-3.5 text-xs sm:text-base sm:px-8 w-full sm:w-auto cursor-pointer flex-1 sm:flex-none"
+              >
+                <span>Download Resume</span>
+                <FaDownload className="text-sm" />
+              </a>
+            </div>
           </motion.div>
         </div>
 
@@ -246,10 +255,7 @@ export default function HomeView({ onNavigate }) {
           transition={{ delay: 1.2, duration: 1.0 }}
         >
           <div className="mouse-icon">
-            <div
-              className="mouse-wheel"
-              style={{ top: `${wheelY}px`, transition: 'top 0.1s ease-out' }}
-            />
+            <div className="mouse-wheel" />
           </div>
         </motion.div>
       </section>
@@ -272,7 +278,7 @@ export default function HomeView({ onNavigate }) {
           <div className="w-full max-w-5xl mx-auto flex flex-col items-center z-10 relative">
 
             {/* Tech Stack */}
-            <div className="w-full text-center flex flex-col items-center mb-20 md:mb-28">
+            <div className="w-full text-center flex flex-col items-center mb-10 md:mb-16">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}

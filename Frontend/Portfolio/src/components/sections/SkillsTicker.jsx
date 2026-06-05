@@ -69,8 +69,6 @@ export default function SkillsTicker() {
 
   return (
     <div className="skills-ticker-container my-6 py-2 select-none relative w-full overflow-hidden">
-      <div className="absolute top-0 bottom-0 left-0 w-12 md:w-24" style={{ background: 'linear-gradient(to right, var(--bg-primary), transparent)', zIndex: 10, pointerEvents: 'none' }} />
-      <div className="absolute top-0 bottom-0 right-0 w-12 md:w-24" style={{ background: 'linear-gradient(to left, var(--bg-primary), transparent)', zIndex: 10, pointerEvents: 'none' }} />
 
       <div className="skills-ticker-track flex items-center gap-10 md:gap-14 py-1">
         {extendedSkillsList.map((skill, index) => {
