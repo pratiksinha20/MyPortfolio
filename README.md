@@ -11,6 +11,7 @@ Built with modern web technologies to serve as my personal portfolio website.
 - Resume section with downloadable PDF
 - Contact form with backend integration
 - Deployed on **Vercel** for fast and reliable hosting
+- Certificate section
 
 ---
 
