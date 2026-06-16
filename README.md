@@ -13,6 +13,7 @@ Built with modern web technologies to serve as my personal portfolio website.
 - Deployed on **Vercel** for fast and reliable hosting
 - Certificate section
 - Skill section
+- 
   
 
 ---
