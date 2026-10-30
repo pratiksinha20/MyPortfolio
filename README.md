@@ -16,7 +16,7 @@ Built with modern web technologies to serve as my personal portfolio website.
 - Acadmic section
   
 
----
+---.,.......
 
 ## 🛠️ Tech Stack
 - **Frontend:** React.js, HTML5, CSS3, JavaScript
